@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Izmena proizvoda</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"
+    ></script>
+    <div th:replace="heder::heder"></div>
+</head>
+<body style="padding-top: 100px">
+<div class="container">
+    <h1>Izmena proizvoda</h1>
+    <p>Popunite sva potrebna polja za promenu</p>
+    <form class="form-horizontal" th:object="${proizvod}" th:action="@{/administrator/proizvod/izmeniProizvod}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{proizvodId}"/>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('proizvodNaziv')}? 'has-error'">
+            <label class="col-sm-2 control-label">Naziv proizvoda</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" th:field="*{proizvodNaziv}" placeholder="Unesi naziv"/>
+                <p th:if="${#fields.hasErrors('proizvodNaziv')}" class="label label-danger" th:errors="*{proizvodNaziv}">Nije unet naziv</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('proizvodOpis')}? 'has-error'">
+            <label class="col-sm-2 control-label">Opis proizvoda</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" th:field="*{proizvodOpis}" placeholder="Unesi opis"/>
+                <p th:if="${#fields.hasErrors('proizvodOpis')}" class="label label-danger" th:errors="*{proizvodOpis}">Nije unet opis</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('proizvodKategorija')}? 'has-error'">
+            <label class="col-sm-2 control-label">Kategorija</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" th:field="*{proizvodKategorija}" placeholder="Unesi kategoriju"/>
+                <p th:if="${#fields.hasErrors('proizvodKategorija')}" class="label label-danger" th:errors="*{proizvodKategorija}">Nije uneta kateg</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('proizvodCena')}? 'has-error'">
+            <label class="col-sm-2 control-label">Cena proizvoda</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" th:field="*{proizvodCena}" placeholder="Unesi cenu"/>
+                <p th:if="${#fields.hasErrors('proizvodCena')}" class="label label-danger" th:errors="*{proizvodCena}">Nije uneta cena</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('proizvodKolicina')}? 'has-error'">
+            <label class="col-sm-2 control-label">Kolicina proizvoda</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" th:field="*{proizvodKolicina}" placeholder="Unesi kolicinu"/>
+                <p th:if="${#fields.hasErrors('proizvodKolicina')}" class="label label-danger" th:errors="*{proizvodKolicina}">Nije uneta kol</p>
+            </div>
+        </div>
+        <div th:class="form-group">
+            <label class="col-sm-2 control-label">Slika proizvoda</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="file"  name="file"/>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-success">Izmeni proizvod</button>
+            <a href="/administrator/prikazProizvodaAdmin" class="btn btn-danger">Odustani</a>
+        </div>
+    </form>
+</div>
+</body>
+<div th:replace="footer::footer"></div>
+</html>

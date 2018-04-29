@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Met Mobile Store</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"
+    ></script>
+    <div th:replace="heder::heder"></div>
+</head>
+<body style="padding-top: 100px">
+<div class="container">
+    <h1>Porudžbine</h1>
+    <table id="tabelaPorudzbina" class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id porudžbine</th>
+            <th>Datum porudžbine</th>
+            <th>Korisničko ime</th>
+        </tr>
+        </thead>
+        <th:block th:each="porudzbina : ${listaPorudzbina}">
+
+            <tr>
+                <td th:text="${porudzbina.porudzbinaId}"></td>
+                <td th:text="${porudzbina.datum}"></td>
+                <td th:text="${porudzbina.korisnickoIme}"></td>
+            </tr>
+        </th:block>
+    </table>
+    <div class="row">
+        <a th:href="@{/administrator/prikazProizvodaAdmin}" class="btn btn-primary">Nazad</a>
+    </div>
+</div>
+</body>
+<div th:replace="footer::footer"></div>
+</html>

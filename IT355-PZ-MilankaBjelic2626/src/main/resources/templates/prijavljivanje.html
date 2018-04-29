@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Prijavljivanje</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <link th:href="@{/Css/login.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <div th:replace="heder::heder"></div>
+</head>
+
+<body>
+<section class="banner" style="background-image: url(Slike/hedeeer.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
+text-align: center;
+padding: 100px 0px;
+margin-bottom: 50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h4>Dobro došli</h4>
+                <h2>Sunčica</h2>
+                <p>Online prodavnica sa najvećom ponudom sunčanih naočara. Garantujemo povolju cenu i dobar kvalitet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="wrapper">
+        <form class="form-horisontal" th:action="@{/prijavljivanje}" method="POST">
+            <h2 class="form-signin-heading">Prijavite se</h2>
+            <p style="padding: 0px 0px 20px 0px">Popunite polja za prijavu</p>
+            <div class="col-sm-10"  style="width: 400px">
+                <input type="text" class="form-control" name="korisnickoIme" placeholder="Korisničko ime" required="" autofocus=""/>
+            </div>
+            <div class="col-sm-10"  style="width: 400px">
+                <input type="password" class="form-control" name="lozinka" placeholder="Lozinka" required=""/>
+            </div>
+            <div class="col-sm-10"  style="padding: 20px 0px 0px 0px">
+                <button class="btn btn-lg btn-primary btn-block" name="Submit" style="width: 200px" value="Prijavljivanje" type="Submit" th:text="Prijavljivanje"></button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<div th:replace="footer::footer"></div>
+</html>

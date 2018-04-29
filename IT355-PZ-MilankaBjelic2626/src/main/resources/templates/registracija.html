@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Registracija</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <div th:replace="heder::heder"></div>
+</head>
+
+<body>
+<section class="banner" style="background-image: url(Slike/hedeeer.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
+text-align: center;
+padding: 100px 0px;
+margin-bottom: 50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h4>Dobro došli</h4>
+                <h2>Sunčica</h2>
+                <p>Online prodavnica sa najvećom ponudom sunčanih naočara. Garantujemo povolju cenu i dobar kvalitet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <h1 style="padding: 0px 0px 10px 200px">Registracija</h1>
+    <p style="padding: 0px 0px 20px 200px">Popunite polja za registraciju</p>
+    <form class="form-horizontal" th:object="${kupac}" th:action="@{/registracija}" method="post">
+        <input type="hidden" th:field="*{kupacId}"/>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('kupacAdresa')}? 'has-error'">
+            <label class="col-sm-2 control-label">Adresa</label>
+            <div class="col-sm-10"  style="width: 400px">
+                <input class="form-control" type="text" th:field="*{kupacAdresa}" placeholder="Unesi adresu"/>
+                <p th:if="${#fields.hasErrors('kupacAdresa')}" class="label label-danger" th:errors="*{kupacAdresa}">Nije uneta adresa</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('kupacGrad')}? 'has-error'">
+            <label class="col-sm-2 control-label">Grad:</label>
+            <div class="col-sm-10" style="width: 400px">
+                <input class="form-control" type="text" th:field="*{kupacGrad}" placeholder="Unesi grad"/>
+                <p th:if="${#fields.hasErrors('kupacGrad')}" class="label label-danger" th:errors="*{kupacGrad}">Nije unet grad</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('kupacEmail')}? 'has-error'">
+            <label class="col-sm-2 control-label">Email:</label>
+            <div class="col-sm-10" style="width: 400px">
+                <input class="form-control" type="text" th:field="*{kupacEmail}" placeholder="Unesi email"/>
+                <p th:if="${#fields.hasErrors('kupacEmail')}" class="label label-danger" th:errors="*{kupacEmail}">Nije unet email</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('kupacIme')}? 'has-error'">
+            <label class="col-sm-2 control-label">Ime i prezime:</label>
+            <div class="col-sm-10" style="width: 400px">
+                <input class="form-control" type="text" th:field="*{kupacIme}" placeholder="Unesi ime i prezime"/>
+                <p th:if="${#fields.hasErrors('kupacIme')}" class="label label-danger" th:errors="*{kupacIme}">Nije uneo name i ln</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('kupacTelefon')}? 'has-error'">
+            <label class="col-sm-2 control-label">Broj telefona:</label>
+            <div class="col-sm-10" style="width: 400px">
+                <input class="form-control" type="text" th:field="*{kupacTelefon}" placeholder="Unesi broj telefona"/>
+                <p th:if="${#fields.hasErrors('kupacTelefon')}" class="label label-danger" th:errors="*{kupacTelefon}">Nije uneo tel</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('korisnickoIme')}? 'has-error'">
+            <label class="col-sm-2 control-label">Korisničko ime:</label>
+            <div class="col-sm-10" style="width: 400px">
+                <input class="form-control" type="text" th:field="*{korisnickoIme}" placeholder="Unesi korisničko ime"/>
+                <p th:if="${#fields.hasErrors('korisnickoIme')}" class="label label-danger" th:errors="*{korisnickoIme}">Nije uneo usn</p>
+            </div>
+        </div>
+        <div th:class="form-group" th:classappend="${#fields.hasErrors('lozinka')}? 'has-error'">
+            <label class="col-sm-2 control-label">Lozinka:</label>
+            <div class="col-sm-10" style="width: 400px">
+                <input class="form-control" type="text" th:field="*{lozinka}" placeholder="Unesi lozinku"/>
+                <p th:if="${#fields.hasErrors('lozinka')}" class="label label-danger" th:errors="*{lozinka}">Nije uneo pass</p>
+            </div>
+        </div>
+        <div class="row" style="padding-left: 210px">
+            <button type="submit" class="btn btn-success">Registruj se</button>
+        </div>
+    </form>
+</div>
+</body>
+<div th:replace="footer::footer"></div>
+</html>

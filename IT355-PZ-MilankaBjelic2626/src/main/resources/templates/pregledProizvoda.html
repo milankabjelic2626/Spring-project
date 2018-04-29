@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Detalji o proizvodu</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"
+    ></script>
+    <div th:replace="heder::heder"></div>
+</head>
+<body style="padding-top: 100px">
+<div class="container">
+    <section>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Detalji o proizvodu</h1>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <img th:src="${proizvod.proizvodSlika}" alt="img" class="img-responsive" style="width: 250px; height: 250px"/>
+            </div>
+            <div class="col-md-5">
+                <h2 th:text="Naziv + ': ' + ${proizvod.proizvodNaziv}"></h2>
+                <h4 th:text="Kategorija + ': ' + ${proizvod.proizvodKategorija}"></h4>
+                <h4 th:text="Cena + ': ' + ${proizvod.proizvodCena} + ' ' + RSD" ></h4>
+                <h4 th:text="Opis + ': ' + ${proizvod.proizvodOpis}"></h4>
+                <div class="row">
+                    <a th:href="@{/administrator/prikazProizvodaAdmin}" class="btn btn-primary">Nazad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<div th:replace="footer::footer"></div>
+</html>
